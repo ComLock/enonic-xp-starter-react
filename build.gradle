@@ -91,7 +91,10 @@ sourceSets {
             srcDir 'src/main/java'
         }
         resources {
-            exclude '*'
+            //exclude '*'
+            exclude '*.js'
+            //include '*.svg'
+            //include '*.xml'
         }
     }
 }
