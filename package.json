@@ -1,0 +1,53 @@
+{
+  "description": "Enonic XP Starter React",
+  "devDependencies": {
+    "babel-core": "^6.26.0",
+    "babel-loader": "^7.1.2",
+    "babel-plugin-array-includes": "^2.0.3",
+    "babel-plugin-optimize-starts-with": "^1.0.1",
+    "babel-plugin-transform-object-rest-spread": "^6.26.0",
+    "babel-preset-env": "^1.6.1",
+    "babel-preset-es2015": "^6.24.1",
+    "babel-preset-react": "^6.24.1",
+    "eslint": "^4.14.0",
+    "eslint-config-airbnb": "^16.1.0",
+    "eslint-plugin-import": "^2.8.0",
+    "eslint-plugin-jsx-a11y": "^6.0.3",
+    "eslint-plugin-react": "^7.5.1",
+    "glob": "^7.1.2",
+    "react": "^16.2.0",
+    "react-dom": "^16.2.0",
+    "webpack": "^3.8.1"
+  },
+  "engines": {
+    "node": "^8.9.3",
+    "npm": "^5.5.1",
+    "yarn": "1.3.2"
+  },
+  "engineStrict": false,
+  "license": "Apache-2.0",
+  "name": "starter-react",
+  "private": true,
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/comlock/enonic-xp-starter-react"
+  },
+  "scripts": {
+    "add": "npm run yarn -- add",
+    "add:dev": "npm run add -- --dev",
+    "build": "./gradlew build;",
+    "clean": "./gradlew clean;",
+    "deploy": "npm run install-app -- -a su:password -f build/libs/$npm_package_name-$npm_package_version.jar;",
+    "eslint": "node_modules/.bin/eslint",
+    "install-app": "npm run toolbox -- install-app",
+    "preyarn": "./gradlew yarnSetup",
+    "tasks": "./gradlew -q tasks --all",
+    "toolbox": "$XP_INSTALL/toolbox/toolbox.sh",
+    "watch": "./gradlew -t build",
+    "webpack": "node_modules/.bin/webpack",
+    "xp": "$XP_INSTALL/bin/server.sh;",
+    "xp:dev": "$XP_INSTALL/bin/server.sh dev;",
+    "yarn": "./.gradle/yarn/yarn-v${npm_package_engines_yarn}/bin/yarn"
+  },
+  "version": "0.0.1"
+}

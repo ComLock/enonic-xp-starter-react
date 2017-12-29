@@ -1,0 +1,10 @@
+{
+  "compact": false,
+  "minified": false,
+  "plugins": [
+    "array-includes",
+    "optimize-starts-with",
+    "transform-object-rest-spread"
+  ],
+  "presets": ["env", "react"]
+}

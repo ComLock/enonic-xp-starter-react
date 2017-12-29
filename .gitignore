@@ -1,0 +1,6 @@
+/.gradle
+/build
+/node_modules
+
+# We use yarn, not npm, so ignore the npm lock file:
+/package-lock.json
