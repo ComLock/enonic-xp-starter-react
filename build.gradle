@@ -54,7 +54,7 @@ node {
 
 
 task watch(type: NodeTask) {
-  script = file('node_modules/.bin/webpack')
+  script = file('node_modules/webpack-cli/bin/webpack.js')
   args = [
     '--color',
     '--hide-modules',
@@ -64,7 +64,7 @@ task watch(type: NodeTask) {
 
 
 task webpack(type: NodeTask) {
-  script = file('node_modules/.bin/webpack')
+  script = file('node_modules/webpack-cli/bin/webpack.js')
   args = [
     '--color',
     '--hide-modules',

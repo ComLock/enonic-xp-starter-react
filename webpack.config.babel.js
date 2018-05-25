@@ -32,6 +32,7 @@ const WEBPACK_CONFIG = {
     filename: "[name]",
     libraryTarget: 'commonjs'
   },
+  mode: 'production',
   module: {
     rules: [
       {
@@ -51,14 +52,14 @@ const WEBPACK_CONFIG = {
             [
               'env', {
                 modules: false, // Let minifyer handle modules...
-                //modules: 'commonjs', // commonjs is the default
+                // modules: 'commonjs', // commonjs is the default
                 targets: {
                   // browserlist combined by OR clause
                   // https://github.com/ai/browserslist
-                  browsers: ["last 2 versions", "not ie <= 10"],
+                  browsers: ['last 2 versions', 'not ie <= 10']
                 },
                 useBuiltIns: 'usage', // won't work before babel-preset-env-2.x
-                debug: true,
+                debug: true
               }
             ],
             'react' // Currently doesn't accept options.
@@ -86,9 +87,9 @@ const WEBPACK_CONFIG = {
       }
     },*/
     new webpack.ProvidePlugin({
-      Map: 'core-js/fn/map'
+      //Map: 'core-js/fn/map'
       //Map: 'imports-loader?this=>global!exports-loader?global.Map!core-js/fn/map'
-      //Map: 'es6-map' // Cannot read property "call" from undefined
+      Map: 'es6-map' // Cannot read property "call" from undefined
       //Map: 'es6-map/polyfill'
     })
     //new PolyfillsPlugin([
