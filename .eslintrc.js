@@ -27,9 +27,28 @@ module.exports = {
         functions: 'never'
     }],
     'function-paren-newline': ['off'],
+    'import/extensions': ['off'],
+    'import/no-absolute-path': ['off'],
     'import/no-extraneous-dependencies': ['off'],
+    'import/no-unresolved': ['warn', {
+      ignore: [ // Should be same as webpack externals:
+        '/lib/xp/.+'
+      ]
+    }],
     'import/prefer-default-export': ['off'],
     'spaced-comment': ['off']
-  } // rules
+  }, // rules
+
+  settings: {
+    /*'import/core-modules': [
+      '/lib/xp/portal'
+    ]*/
+    //'import/ignore': [] // import/no-unresolved has its own ignore
+    /*'import/resolver': { // Does not work with externals, and perhaps not babel.js
+      'webpack': {
+        config: './webpack.config.babel.js'
+      }
+    }*/
+  } // settings
 
 } // module.exports
