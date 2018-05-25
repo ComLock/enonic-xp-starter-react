@@ -20,10 +20,14 @@
     "eslint-plugin-import": "^2.8.0",
     "eslint-plugin-jsx-a11y": "^6.0.3",
     "eslint-plugin-react": "^7.5.1",
+    "exports-loader": "^0.7.0",
     "glob": "^7.1.2",
+    "global": "^4.3.2",
+    "imports-loader": "^0.8.0",
     "react": "^16.2.0",
     "react-dom": "^16.2.0",
-    "webpack": "^3.8.1"
+    "webpack": "^4.8.3",
+    "webpack-polyfills-plugin": "^0.2.0"
   },
   "engines": {
     "node": "^8.9.3",

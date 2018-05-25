@@ -1,5 +1,7 @@
 import glob from 'glob';
 import path from 'path';
+import webpack from 'webpack';
+import PolyfillsPlugin from 'webpack-polyfills-plugin';
 const MinifyPlugin = require('babel-minify-webpack-plugin');
 
 const SRC_RESOURCES_DIR = './src/main/resources';
@@ -10,7 +12,12 @@ const ES6_GLOB = glob.sync(`${SRC_RESOURCES_DIR}/**/*.{es,es6,jsx}`, { absolute:
 
 let entry = ES6_GLOB.reduce((entries, entry) => Object.assign(entries, {[
     entry.replace(`${SRC_RESOURCES_DIR}/`, '').replace(/\.(es6?|jsx)/, '.js')
-]: entry}), {});
+]: [
+  // TypeError: Cannot read property "__core-js_shared__" from undefined (com.enonic.xp.resource.ResourceProblemException)
+  // var store = global[SHARED] || (global[SHARED] = {});
+  //'core-js/fn/map',
+  entry
+]}), {});
 //entry['assets/js/scripts.js'] = `${SRC_ASSETS_DIR}/js/scripts.es6`;
 
 
@@ -70,6 +77,23 @@ const WEBPACK_CONFIG = {
     setImmediate: true
   },*/
   plugins: [
+    /*{
+      'apply': function(compiler) {
+        compiler.parser.plugin('expression global', function() {
+          this.state.module.addVariable('global', "(function() { return this; }()) || Function('return this')()");
+          return true;
+        });
+      }
+    },*/
+    new webpack.ProvidePlugin({
+      Map: 'core-js/fn/map'
+      //Map: 'imports-loader?this=>global!exports-loader?global.Map!core-js/fn/map'
+      //Map: 'es6-map' // Cannot read property "call" from undefined
+      //Map: 'es6-map/polyfill'
+    })
+    //new PolyfillsPlugin([
+      //'Map'
+   //])
     /*new MinifyPlugin({ //minifyOpts
     }, { //pluginOpts
     }) // MinifyPlugin*/
