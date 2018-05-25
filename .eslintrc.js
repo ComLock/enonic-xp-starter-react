@@ -36,6 +36,13 @@ module.exports = {
       ]
     }],
     'import/prefer-default-export': ['off'],
+    'max-len': ['warn', 160, 2, {
+      ignoreUrls: true,
+      ignoreComments: true,
+      ignoreRegExpLiterals: true,
+      ignoreStrings: true,
+      ignoreTemplateLiterals: true,
+    }],
     'spaced-comment': ['off']
   }, // rules
 
