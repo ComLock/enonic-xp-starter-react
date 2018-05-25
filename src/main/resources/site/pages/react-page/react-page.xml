@@ -3,6 +3,6 @@
     <display-name>React page</display-name>
     <config/>
     <regions>
-        <region name="main"/>
+        <region name="page"/>
     </regions>
 </page>
