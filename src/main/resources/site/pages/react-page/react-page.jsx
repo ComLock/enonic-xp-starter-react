@@ -12,6 +12,7 @@
 //var Map = require('es6-map/polyfill'); // If you strictly want to use the polyfill even if the native Map exists
 //import {default as Map} from 'es6-map/polyfill'; // Cannot read property "call" from undefined
 
+import React from 'react';
 import { renderToString } from 'react-dom/server';
 
 

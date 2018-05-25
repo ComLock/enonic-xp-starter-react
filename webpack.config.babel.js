@@ -86,12 +86,12 @@ const WEBPACK_CONFIG = {
         });
       }
     },*/
-    new webpack.ProvidePlugin({
+    /*new webpack.ProvidePlugin({
       //Map: 'core-js/fn/map'
       //Map: 'imports-loader?this=>global!exports-loader?global.Map!core-js/fn/map'
       Map: 'es6-map' // Cannot read property "call" from undefined
       //Map: 'es6-map/polyfill'
-    })
+    })*/
     //new PolyfillsPlugin([
       //'Map'
    //])
