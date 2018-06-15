@@ -64,5 +64,5 @@
     "xp:dev": "$XP_INSTALL/bin/server.sh dev;",
     "yarn": "./.gradle/yarn/yarn-v${npm_package_engines_yarn}/bin/yarn"
   },
-  "version": "0.0.1"
+  "version": "0.1.0-SNAPSHOT"
 }
