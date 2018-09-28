@@ -6,7 +6,7 @@ plugins {
 
 
 task wrapper(type: Wrapper) {
-  gradleVersion = '4.0.1'
+  gradleVersion = '4.10.2'
   //distributionType = 'all'
 }
 
@@ -36,19 +36,19 @@ dependencies {
 
 
 node {
-  version = '8.9.3'
+  version = '8.12.0'
 
   // Base URL for fetching node distributions (change if you have a mirror).
-  distBaseUrl = 'https://nodejs.org/dist'
+  //distBaseUrl = 'https://nodejs.org/dist'
 
   // If true, it will download node using above parameters.
   // If false, it will try to use globally installed node.
   // NOTE: If you have AVN working you could probably set this to false.
   download = true
 
-  npmVersion = '5.5.1'
+  //npmVersion = '5.5.1'
 
-  yarnVersion = '1.3.2'
+  //yarnVersion = '1.3.2'
 
 } // node
 
