@@ -1,5 +1,6 @@
 import glob from 'glob';
 import path from 'path';
+import CopyWebpackPlugin from 'copy-webpack-plugin';
 //import webpack from 'webpack';
 //import PolyfillsPlugin from 'webpack-polyfills-plugin';
 //const MinifyPlugin = require('babel-minify-webpack-plugin');
@@ -7,6 +8,7 @@ import path from 'path';
 const SRC_RESOURCES_DIR = './src/main/resources';
 const SRC_ASSETS_DIR = `${SRC_RESOURCES_DIR}/assets`;
 const DST_RESOURCES_DIR = './build/resources/main';
+const DST_ASSETS_DIR = `${DST_RESOURCES_DIR}/assets`;
 const ASSETS_ES6_GLOB = glob.sync(`${SRC_ASSETS_DIR}/**/*.{es,es6,jsx}`);
 const ES6_GLOB = glob.sync(`${SRC_RESOURCES_DIR}/**/*.{es,es6,jsx}`, { absolute: false, ignore: ASSETS_ES6_GLOB });
 
@@ -24,7 +26,7 @@ const entry = ES6_GLOB.reduce((entries, e) => Object.assign(entries, {
 const WEBPACK_CONFIG = {
   entry,
   externals: [
-    /\/lib\/xp\/.+/
+    /\/lib\/(enonic|xp)\/.+/
   ],
   devtool: false, // Don't waste time generating source-maps
   output: {
@@ -37,7 +39,7 @@ const WEBPACK_CONFIG = {
     rules: [
       {
         test: /\.(es6?|jsx?)$/,
-        exclude: /(node_modules)/, // Avoid $export is not a function when transform-runtime
+        exclude: /node_modules/, // Avoid $export is not a function when transform-runtime
         loader: 'babel-loader',
         options: {
           babelrc: false,
@@ -46,21 +48,23 @@ const WEBPACK_CONFIG = {
           plugins: [
             '@babel/plugin-proposal-object-rest-spread',
             '@babel/plugin-transform-object-assign',
+            //'@babel/plugin-transform-regenerator',
+            //'@babel/plugin-transform-runtime',
             'array-includes'
           ],
           presets: [
-            /*[
+            [
               '@babel/preset-env', {
                 useBuiltIns: false // false means polyfill not required runtime
               }
-            ],*/
+            ],
             '@babel/preset-react'
           ]
         }
       }
     ] // loaders
-  }/*, // module
-  node: {
+  }, // module
+  /*node: {
     console: false,
     global: true, // Needed by babel-polyfill, but didn't help :(
     process: true,
@@ -69,8 +73,15 @@ const WEBPACK_CONFIG = {
     Buffer: true,
     setImmediate: true
   },*/
-  /*plugins: [
-    {
+  plugins: [
+    new CopyWebpackPlugin([
+      { from: 'babel-standalone/', to: 'assets/babel-standalone/' },
+      { from: 'react/umd/', to: 'assets/react/' },
+      { from: 'react-dom/umd/', to: 'assets/react-dom/' }
+    ], {
+      context: path.resolve(__dirname, 'node_modules')
+    })
+    /*{
       apply: compiler => {
         compiler.parser.plugin('expression global', () => {
           this.state.module.addVariable('global', "(function() { return this; }()) || Function('return this')()");
@@ -89,7 +100,7 @@ const WEBPACK_CONFIG = {
     ]),
     new MinifyPlugin({ //minifyOpts
     }, { //pluginOpts
-    }) // MinifyPlugin
-  ]*/ // plugins
+    }) // MinifyPlugin*/
+  ] // plugins
 };
 export default WEBPACK_CONFIG;

@@ -43,6 +43,7 @@ module.exports = {
       ignoreStrings: true,
       ignoreTemplateLiterals: true,
     }],
+    'object-curly-spacing': ['off'],
     'spaced-comment': ['off']
   }, // rules
 
