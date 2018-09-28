@@ -76,7 +76,9 @@ const WEBPACK_CONFIG = {
   plugins: [
     new CopyWebpackPlugin([
       { from: 'babel-standalone/', to: 'assets/babel-standalone/' },
+      { from: 'bootstrap/dist/', to: 'assets/bootstrap/' },
       { from: 'react/umd/', to: 'assets/react/' },
+      { from: 'react-bootstrap/dist/', to: 'assets/react-bootstrap/' },
       { from: 'react-dom/umd/', to: 'assets/react-dom/' }
     ], {
       context: path.resolve(__dirname, 'node_modules')
